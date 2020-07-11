@@ -1,0 +1,46 @@
+<!-- include the header ejs -->
+<%- include("../partials/header") %>
+
+
+<div class="container">
+
+        <header class="jumbotron">
+            <div class="container">
+                    <h1>Welcome to YelpCamp</h1>
+                    <p>View our hand picked campgrounds from all over the worlds</p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+                    </p>
+            </div>
+
+        </header>  
+
+        <div class="row">
+                <div class="col-lg-12">
+                    <h3>Our Most Popular Campgrounds!</h3>
+                </div>
+        </div>
+        <!-- including it in a div to use the col width for the grid system -->
+        <div class="row text-center">   
+        <!-- creating a loop to display the campgrounds details -->
+        <% campgrounds.forEach(function(campground){ %>
+
+            <!-- creating divs would be better, to display the imgs -->
+            <div class="col-md-3 col-sm-6">
+                <!-- thumbnail is a bootstrap class hels to make a grid item -->
+                <div class="thumbnail">
+                     <img src="<%= campground.image %>" >
+                        <div class="caption">
+                            <h4> <%= campground.name %> </h4> 
+                         </div>  
+                         <p>
+                             <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                         </p>
+                </div>
+            </div>
+
+        <% }); %>   
+    </div>
+  </div>
+<!-- include the footer ejs -->
+<%- include("../partials/footer") %>
